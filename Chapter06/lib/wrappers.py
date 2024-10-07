@@ -1,6 +1,5 @@
 import cv2
-import gym
-import gym.spaces
+import gymnasium as gym
 import numpy as np
 import collections
 
@@ -17,10 +16,10 @@ class FireResetEnv(gym.Wrapper):
 
     def reset(self):
         self.env.reset()
-        obs, _, done, _ = self.env.step(1)
+        obs, _, done, _, _ = self.env.step(1)
         if done:
             self.env.reset()
-        obs, _, done, _ = self.env.step(2)
+        obs, _, done, _, _ = self.env.step(2)
         if done:
             self.env.reset()
         return obs
@@ -38,7 +37,7 @@ class MaxAndSkipEnv(gym.Wrapper):
         total_reward = 0.0
         done = None
         for _ in range(self._skip):
-            obs, reward, done, info = self.env.step(action)
+            obs, reward, done, _, info = self.env.step(action)
             self._obs_buffer.append(obs)
             total_reward += reward
             if done:

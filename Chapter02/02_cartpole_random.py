@@ -1,4 +1,4 @@
-import gym
+import gymnasium as gym
 
 
 if __name__ == "__main__":
