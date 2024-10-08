@@ -48,7 +48,7 @@ class MaxAndSkipEnv(gym.Wrapper):
     def reset(self):
         """Clear past frame buffer and init. to first obs. from inner env."""
         self._obs_buffer.clear()
-        obs = self.env.reset()
+        obs,info = self.env.reset()
         self._obs_buffer.append(obs)
         return obs
 
